@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="victor-opal.js"></script>
+    <script type="text/javascript">
+      function eval_rb(){
+        const ruby = document.getElementById('src').value
+        Opal.eval(ruby)
+      }
+      function render_to_img(xml){
+        document.getElementById('svg').src=`data:image/svg+xml;base64,${btoa(xml)}`
+      }
+    </script>
+    <script type="text/ruby">
+      def render(svg)
+        xml = svg.render
+        %x{
+          render_to_img(xml)
+        }
+      end
+    </script>
+    <style>
+body { height: 100vh; }
+#refresh {
+  position: absolute; top: 0; right: 0; 
+  border: 0; padding: 0;
+}
+#src { height: 100%; width: 100%; }
+#svg { position: absolute; bottom: 0; right: 0; }
+@media (orientation: landscape) {
+  #svg { width: 50vw; }
+}
+@media (orientation: portrait) {
+  #svg { height: 50vh; }
+}
+    </style>
+  </head>
+  <body>
+    <button id="refresh" onclick="eval_rb()" title="Shift+Enter to refresh">🔄</button>
+    <textarea id="src">
+svg = Victor::SVG.new width: 140, height: 100, style: { background: '#ddd' }
+svg.build do 
+  rect x: 10, y: 10, width: 120, height: 80, rx: 10, fill: '#666'
+  circle cx: 50, cy: 50, r: 30, fill: 'yellow'
+  circle cx: 58, cy: 32, r: 4, fill: 'black'
+  polygon points: %w[45,50 80,30 80,70], fill: '#666'
+
+  3.times do |i|
+    x = 80 + i*18
+    circle cx: x, cy: 50, r: 4, fill: 'yellow'
+  end
+end
+
+render svg
+    </textarea>
+    <img id="svg" src="#"></img>
+  </body>
+</html>
+

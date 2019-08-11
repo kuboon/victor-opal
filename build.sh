@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-opal -g victor -c main.rb > main.js
+opal -g victor -c victor-opal.rb > victor-opal.js
