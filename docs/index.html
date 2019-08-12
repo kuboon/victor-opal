@@ -10,7 +10,9 @@
         Opal.eval(ruby)
       }
       function render_to_img(xml){
-        document.getElementById('svg').src=`data:image/svg+xml;base64,${btoa(xml)}`
+        const data = `data:image/svg+xml;base64,${btoa(xml)}` 
+        document.getElementById('svg').src = data
+        document.getElementById('download').href = data
       }
     </script>
     <script type="text/ruby">
@@ -40,6 +42,7 @@ body { height: 100vh; }
   <body>
     <div>
       <button id="refresh" onclick="eval_rb()" title="Shift+Enter to refresh">render</button>
+      <a id="download" download="untitled.svg">download</button>
     </div>
     <textarea id="src">
 svg = Victor::SVG.new width: 140, height: 100, style: { background: '#ddd' }
