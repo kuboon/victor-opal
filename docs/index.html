@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="victor-opal.js"></script>
     <script type="text/javascript">
       function eval_rb(){
@@ -23,16 +24,16 @@
     <style>
 body { height: 100vh; }
 #refresh {
-  position: absolute; top: 0; right: 0; 
-  border: 0; padding: 0;
 }
-#src { height: 100%; width: 100%; }
-#svg { position: absolute; bottom: 0; right: 0; }
+#svg { 
+  position: absolute; bottom: 0; right: 0;
+  object-fit: contain;
+}
 @media (orientation: landscape) {
-  #svg { width: 50vw; }
+  #src,#svg { height: 100%; width: 50%; }
 }
 @media (orientation: portrait) {
-  #svg { height: 50vh; }
+  #src,#svg { height: 50%; width: 100%; }
 }
     </style>
   </head>
