@@ -37,7 +37,9 @@ body { height: 100vh; }
     </style>
   </head>
   <body>
-    <button id="refresh" onclick="eval_rb()" title="Shift+Enter to refresh">🔄</button>
+    <div>
+      <button id="refresh" onclick="eval_rb()" title="Shift+Enter to refresh">render</button>
+    </div>
     <textarea id="src">
 svg = Victor::SVG.new width: 140, height: 100, style: { background: '#ddd' }
 svg.build do 
