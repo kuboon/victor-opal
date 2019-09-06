@@ -21,7 +21,14 @@ module Victor
       mapped.join ' '
     end
     def xml_escape(value)
-      "\"#{value.to_s}\""
+      rep = {
+        '"': '&quot;',
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;'
+      }
+      ret = value.to_s.gsub(rep.keys.join, rep)
+      "\"#{ret}\""
     end
   end
 
