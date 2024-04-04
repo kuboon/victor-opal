@@ -1,6 +1,0 @@
-{
-  "devDependencies": {
-    "http-server": "^0.11.1",
-    "opal": "^0.6.4"
-  }
-}

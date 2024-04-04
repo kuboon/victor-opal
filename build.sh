@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-opal -g victor -c victor-opal.rb > docs/victor-opal.js
+bundle exec opal -d --verbose --missing-require ignore -g victor -c victor-opal.rb > docs/victor-opal.js
